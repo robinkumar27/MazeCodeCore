@@ -22,10 +22,14 @@ namespace AccountOwnerServer.Controllers
         [HttpGet]
         public IEnumerable<string> Get()
         {
-            _logger.LogInfo("Here is info message from the controller.");
-            _logger.LogDebug("Here is debug message from the controller.");
-            _logger.LogWarn("Here is warn message from the controller.");
-            _logger.LogError("Here is error message from the controller.");
+            for (int i = 0; i < 100000; i++)
+            {
+                _logger.LogInfo("Here is info message from the controller.");
+                _logger.LogDebug("Here is debug message from the controller.");
+                _logger.LogWarn("Here is warn message from the controller.");
+                _logger.LogError("Here is error message from the controller.");
+            }
+           
             return new string[] { "value1", "value2" };
         }
     }
