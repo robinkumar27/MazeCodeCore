@@ -1,5 +1,7 @@
+using AccountOwnerServer.CustomExceptionMiddleware;
 using AccountOwnerServer.Models;
 using Contracts;
+using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AccountOwnerServer.Controllers
@@ -35,23 +37,24 @@ namespace AccountOwnerServer.Controllers
         //}
         public IActionResult Get()
         {
-            try
-            {
+            //try
+            //{
 
                 _logger.LogInfo("Fetching all the Students from the storage");
 
-                var students = DataManager.GetAllStudents();
+                //var students = DataManager.GetAllStudents();
+                throw new Exception("Exception while fetching all the students from the storage.");
 
-                _logger.LogInfo($"Returning {students.Count} students.");
+               // _logger.LogInfo($"Returning {students.Count} students.");
 
 
-                return Ok(students);
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError($"Something went wrong: {ex}");
-                return StatusCode(500, "Internal server error");
-            }
+               // return Ok(students);
+           // }
+            //catch (Exception ex)
+            //{
+            //    _logger.LogError($"Something went wrong: {ex}");
+            //    return StatusCode(500, "Internal server error");
+            //}
         }
     }
 }
